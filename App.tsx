@@ -1,118 +1,87 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
+  StatusBar,
+  Dimensions,
+  Image,
+  ScrollView,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import colors from './src/assets/others/colors';
+import Button from './src/components/button';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      <StatusBar backgroundColor={colors.blue} />
+      <LinearGradient
+        colors={[colors.blue, colors.white]}
+        style={styles.linearGradient}>
+        <Image
+          style={styles.logo}
+          source={require('./src/assets/images/logo.png')}
+        />
+        <Image
+          style={styles.atomo}
+          source={require('./src/assets/images/atomo.png')}
+        />
+        <ScrollView>
+          <Button
+            title="RESISTOR POR CORES"
+            onPress={() => {}}
+            icon="ResistorIcon"></Button>
+          <Button
+            title="RESISTORES PARALELO"
+            onPress={() => {}}
+            icon="ParallelResistorIcon"></Button>
+          <Button
+            title="RESISTORES SÉRIE"
+            onPress={() => {}}
+            icon="SeriesResistorIcon"></Button>
+          <Button
+            title="CAPACITOR POR CORES"
+            onPress={() => {}}
+            icon="CapacitorIcon"></Button>
+          <Button
+            title="CAPACITORES PARALELO"
+            onPress={() => {}}
+            icon="ParallelCapacitorIcon"></Button>
+          <Button
+            title="CAPACITORES SÉRIE"
+            onPress={() => {}}
+            icon="SeriesCapacitorIcon"></Button>
+        </ScrollView>
+      </LinearGradient>
     </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  linearGradient: {
+    flex: 1,
+    width: Dimensions.get('window').width,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  logo: {
+    marginTop: 30,
+    marginHorizontal: 'auto',
+    marginBottom: 20,
   },
-  highlight: {
-    fontWeight: '700',
+  atomo: {
+    position: 'absolute',
+    top: 20,
+    left: Dimensions.get('window').width * 0.05,
+    width: Dimensions.get('window').width * 0.9,
+    height: Dimensions.get('window').height,
+    resizeMode: 'contain',
   },
 });
-
 export default App;
