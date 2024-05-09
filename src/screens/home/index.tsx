@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  StatusBar,
-  Dimensions,
-  Image,
-  ScrollView,
-} from 'react-native';
+import {View, StatusBar, Image, ScrollView} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import colors from '../../assets/others/colors';
 import Button from '../../components/button';
+import styles from './styles';
 
 function Home() {
   return (
@@ -57,31 +51,4 @@ function Home() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
-  },
-  linearGradient: {
-    flex: 1,
-    width: Dimensions.get('window').width,
-  },
-  logo: {
-    marginTop: 30,
-    marginHorizontal: 'auto',
-    marginBottom: 20,
-  },
-  atomo: {
-    position: 'absolute',
-    top: 20,
-    left: Dimensions.get('window').width * 0.05,
-    width: Dimensions.get('window').width * 0.9,
-    height: Dimensions.get('window').height,
-    resizeMode: 'contain',
-  },
-});
 export default Home;

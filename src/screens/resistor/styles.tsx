@@ -46,7 +46,7 @@ export default StyleSheet.create({
     paddingVertical: 5,
     backgroundColor: 'rgba(0,0,0,.7)',
   },
-  capacitor: {
+  resistor: {
     marginHorizontal: 'auto',
   },
   selectorsContainer: {
@@ -67,7 +67,10 @@ export default StyleSheet.create({
     marginRight: 10,
     marginLeft: -70,
   },
-  capacitorValueText: {
+  selectorsTextQtd: {
+    marginLeft: -85,
+  },
+  resistorValueText: {
     color: colors.white,
     fontSize: 25,
     textAlign: 'center',
