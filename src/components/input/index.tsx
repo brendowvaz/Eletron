@@ -18,7 +18,7 @@ const Input = React.forwardRef<TextInput, InputProps>(
           ref={ref}
           keyboardType="numeric"
           onChange={e => {
-            onChange(e.nativeEvent.text);
+            onChange(e.nativeEvent.text.replace(/[^0-9]/g, ''));
           }}
           placeholderTextColor={colors.grey600}
           placeholder={label}

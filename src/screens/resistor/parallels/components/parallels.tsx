@@ -15,16 +15,18 @@ const Parallels = () => {
 
   const [resistorValue, setResistorValue] = useState('');
 
+  const resistors = Object.entries(resistorValues).map(([key, v]) => v);
+
   useEffect(() => {
-    const array = Object.entries(resistorValues)
+    const arr = Object.entries(resistorValues)
       .map(([key, v]) => v.value !== '' && v)
       .filter(n => n);
 
-    if (array.length < 2) setResistorValue('');
+    if (arr.length < 2) setResistorValue('');
     else {
       let resistor = 0;
 
-      array.map(({value, unit}) => {
+      arr.map(({value, unit}) => {
         value = unit === 'kΩ' ? value * 1000 : value;
         resistor = resistor + 1 / value;
       });
@@ -34,20 +36,18 @@ const Parallels = () => {
   }, [resistorValues]);
 
   const handleAdd = () => {
-    const array = Object.keys(resistorValues).map(key => key);
     setResistorValues(rest => ({
       ...rest,
-      [array.length]: {value: '', unit: 'Ω'},
+      [resistors.length]: {value: '', unit: 'Ω'},
     }));
   };
 
   const handleRemove = () => {
-    const array = Object.entries(resistorValues).map(([key, v]) => v);
-    if (array.length > 2) {
+    if (resistors.length > 2) {
       let obj = {};
 
-      array.map((o, i) => {
-        if (i < array.length - 1) obj = {...obj, [i]: o};
+      resistors.map((o, i) => {
+        if (i < resistors.length - 1) obj = {...obj, [i]: o};
       });
       setResistorValues(obj);
     }
@@ -66,33 +66,32 @@ const Parallels = () => {
           <Text style={styles.optionText}>Remover</Text>
         </TouchableOpacity>
       </View>
-      {Object.entries(resistorValues).map(([key, v], i) => {
-        return (
-          <View style={styles.selectorsContainer} key={i}>
-            <Text style={styles.selectorsText}>{i + 1}º Resistor:</Text>
-            <Input
-              onChange={e => {
-                setResistorValues(rest => ({
-                  ...rest,
-                  [i]: {...v, value: e},
-                }));
-              }}
-            />
-            <Picker
-              selectedValue={v.unit}
-              style={styles.selectorsUnity}
-              onValueChange={itemValue => {
-                setResistorValues(rest => ({
-                  ...rest,
-                  [i]: {...v, unit: itemValue},
-                }));
-              }}>
-              <Picker.Item label="kΩ" value="kΩ" />
-              <Picker.Item label="Ω" value="Ω" />
-            </Picker>
-          </View>
-        );
-      })}
+      {resistors.map((v, i) => (
+        <View style={styles.selectorsContainer} key={i}>
+          <Text style={styles.selectorsText}>{i + 1}º Resistor:</Text>
+          <Input
+            value={v.value}
+            onChange={e => {
+              setResistorValues(rest => ({
+                ...rest,
+                [i]: {...v, value: e},
+              }));
+            }}
+          />
+          <Picker
+            selectedValue={v.unit}
+            style={styles.selectorsUnity}
+            onValueChange={itemValue => {
+              setResistorValues(rest => ({
+                ...rest,
+                [i]: {...v, unit: itemValue},
+              }));
+            }}>
+            <Picker.Item label="kΩ" value="kΩ" />
+            <Picker.Item label="Ω" value="Ω" />
+          </Picker>
+        </View>
+      ))}
 
       <Text style={styles.resistorValueText}>{resistorValue}</Text>
     </ScrollView>

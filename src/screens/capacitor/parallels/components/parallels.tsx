@@ -16,16 +16,18 @@ const Parallels = () => {
 
   const [capacitorValue, setCapacitorValue] = useState('');
 
+  const capacitors = Object.entries(capacitorValues).map(([key, v]) => v);
+
   useEffect(() => {
-    const array = Object.entries(capacitorValues)
+    const arr = Object.entries(capacitorValues)
       .map(([key, v]) => v.value !== '' && v)
       .filter(n => n);
 
-    if (array.length < 2) setCapacitorValue('');
+    if (arr.length < 2) setCapacitorValue('');
     else {
       let cap = 0;
 
-      array.map(({value, unit}) => {
+      arr.map(({value, unit}) => {
         value = unit === 'nF' ? value * 1000 : +value;
         cap = cap + value;
       });
@@ -35,20 +37,18 @@ const Parallels = () => {
   }, [capacitorValues]);
 
   const handleAdd = () => {
-    const array = Object.keys(capacitorValues).map(key => key);
     setCapacitorValues(rest => ({
       ...rest,
-      [array.length]: {value: '', unit: 'pF'},
+      [capacitors.length]: {value: '', unit: 'pF'},
     }));
   };
 
   const handleRemove = () => {
-    const array = Object.entries(capacitorValues).map(([key, v]) => v);
-    if (array.length > 2) {
+    if (capacitors.length > 2) {
       let obj = {};
 
-      array.map((o, i) => {
-        if (i < array.length - 1) obj = {...obj, [i]: o};
+      capacitors.map((o, i) => {
+        if (i < capacitors.length - 1) obj = {...obj, [i]: o};
       });
       setCapacitorValues(obj);
     }
@@ -67,33 +67,32 @@ const Parallels = () => {
           <Text style={styles.optionText}>Remover</Text>
         </TouchableOpacity>
       </View>
-      {Object.entries(capacitorValues).map(([key, v], i) => {
-        return (
-          <View style={styles.selectorsContainer} key={i}>
-            <Text style={styles.selectorsText}>{i + 1}º Capacitor:</Text>
-            <Input
-              onChange={e => {
-                setCapacitorValues(rest => ({
-                  ...rest,
-                  [i]: {...v, value: e},
-                }));
-              }}
-            />
-            <Picker
-              selectedValue={v.unit}
-              style={styles.selectorsUnity}
-              onValueChange={itemValue => {
-                setCapacitorValues(rest => ({
-                  ...rest,
-                  [i]: {...v, unit: itemValue},
-                }));
-              }}>
-              <Picker.Item label="pF" value="pF" />
-              <Picker.Item label="nF" value="nF" />
-            </Picker>
-          </View>
-        );
-      })}
+      {capacitors.map((v, i) => (
+        <View style={styles.selectorsContainer} key={i}>
+          <Text style={styles.selectorsText}>{i + 1}º Capacitor:</Text>
+          <Input
+            value={v.value}
+            onChange={e => {
+              setCapacitorValues(rest => ({
+                ...rest,
+                [i]: {...v, value: e},
+              }));
+            }}
+          />
+          <Picker
+            selectedValue={v.unit}
+            style={styles.selectorsUnity}
+            onValueChange={itemValue => {
+              setCapacitorValues(rest => ({
+                ...rest,
+                [i]: {...v, unit: itemValue},
+              }));
+            }}>
+            <Picker.Item label="pF" value="pF" />
+            <Picker.Item label="nF" value="nF" />
+          </Picker>
+        </View>
+      ))}
 
       <Text style={styles.capacitorValueText}>{capacitorValue}</Text>
     </ScrollView>
