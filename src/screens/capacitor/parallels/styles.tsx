@@ -1,6 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-import colors from '../../assets/others/colors';
+import colors from '../../../assets/others/colors';
 
 export default StyleSheet.create({
   container: {
@@ -28,6 +28,9 @@ export default StyleSheet.create({
     color: colors.white,
     paddingVertical: 10,
   },
+  tittleParallels: {
+    marginBottom: -40,
+  },
   linearGradient: {
     flex: 1,
     width: Dimensions.get('window').width,
@@ -46,6 +49,9 @@ export default StyleSheet.create({
     paddingVertical: 5,
     backgroundColor: 'rgba(0,0,0,.7)',
   },
+  selectorsScrollViewSeries: {
+    marginTop: 80,
+  },
   capacitor: {
     marginHorizontal: 'auto',
   },
@@ -61,6 +67,13 @@ export default StyleSheet.create({
     color: colors.white,
     backgroundColor: colors.primary,
   },
+  selectorsUnity: {
+    height: 50,
+    width: 100,
+    marginLeft: 10,
+    color: colors.white,
+    backgroundColor: colors.primary,
+  },
   selectorsText: {
     color: colors.white,
     fontSize: 16,
@@ -72,5 +85,17 @@ export default StyleSheet.create({
     fontSize: 25,
     textAlign: 'center',
     marginTop: 20,
+  },
+  options: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  optionTouchable: {
+    alignItems: 'center',
+  },
+  optionText: {
+    color: colors.white,
+    marginHorizontal: 10,
   },
 });

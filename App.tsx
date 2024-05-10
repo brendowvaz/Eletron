@@ -4,7 +4,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/home';
-import CapacitorScreen from './src/screens/capacitor';
+import CapacitorScreen from './src/screens/capacitor/colors';
 
 const Stack = createStackNavigator();
 
