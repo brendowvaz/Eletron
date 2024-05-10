@@ -6,7 +6,7 @@ import colors from '../../assets/others/colors';
 import Button from '../../components/button';
 import styles from './styles';
 
-function Home() {
+function Home({navigation}: any) {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={colors.blue} />
@@ -24,27 +24,39 @@ function Home() {
         <ScrollView>
           <Button
             title="RESISTOR POR CORES"
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate('ResistorColors');
+            }}
             icon="ResistorIcon"></Button>
           <Button
             title="RESISTORES PARALELO"
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate('ResistorParallels');
+            }}
             icon="ParallelResistorIcon"></Button>
           <Button
             title="RESISTORES SÉRIE"
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate('ResistorSeries');
+            }}
             icon="SeriesResistorIcon"></Button>
           <Button
             title="CAPACITOR POR CORES"
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate('CapacitorColors');
+            }}
             icon="CapacitorIcon"></Button>
           <Button
             title="CAPACITORES PARALELO"
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate('CapacitorParallels');
+            }}
             icon="ParallelCapacitorIcon"></Button>
           <Button
             title="CAPACITORES SÉRIE"
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate('CapacitorSeries');
+            }}
             icon="SeriesCapacitorIcon"></Button>
         </ScrollView>
       </LinearGradient>

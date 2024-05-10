@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  ViewStyle,
-  TouchableHighlight,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {Text, ViewStyle, TouchableOpacity, Image, View} from 'react-native';
 
 import colors from '../../assets/others/colors';
 import styles from './styles';
@@ -25,10 +19,8 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({title, onPress, style, icon}) => {
   return (
-    <TouchableHighlight
-      style={[styles.buttonContainer, style]}
-      onPress={onPress}>
-      <TouchableOpacity style={styles.button}>
+    <View style={[styles.buttonContainer, style]}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         {icon === 'ResistorIcon' && (
           <ResistorIcon height={30} width={50} color={colors.white} />
         )}
@@ -59,7 +51,7 @@ const Button: React.FC<ButtonProps> = ({title, onPress, style, icon}) => {
         )}
         <Text style={styles.buttonText}>{title}</Text>
       </TouchableOpacity>
-    </TouchableHighlight>
+    </View>
   );
 };
 

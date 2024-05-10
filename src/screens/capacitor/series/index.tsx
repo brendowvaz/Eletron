@@ -13,14 +13,16 @@ import colors from '../../../assets/others/colors';
 import Series from './components/series';
 import styles from './styles';
 
-function Capacitor() {
+function Capacitor({navigation}: any) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={colors.blue} />
       <LinearGradient
         colors={[colors.blue, colors.white]}
         style={styles.linearGradient}>
-        <TouchableOpacity style={styles.header} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.header}
+          onPress={() => navigation.goBack()}>
           <BackIcon height={20} width={20} color={colors.white} />
           <Text style={styles.headerText}>Voltar</Text>
         </TouchableOpacity>

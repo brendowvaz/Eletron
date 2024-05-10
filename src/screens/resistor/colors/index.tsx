@@ -13,7 +13,7 @@ import colors from '../../../assets/others/colors';
 import Bands from './components/bands';
 import styles from './styles';
 
-function Resistor() {
+function Resistor({navigation}: any) {
   const [bandQtd, setBandQtd] = useState(5);
   const [band1, setBand1] = useState('black');
   const [band2, setBand2] = useState('black');
@@ -27,7 +27,9 @@ function Resistor() {
       <LinearGradient
         colors={[colors.blue, colors.white]}
         style={styles.linearGradient}>
-        <TouchableOpacity style={styles.header} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.header}
+          onPress={() => navigation.goBack()}>
           <BackIcon height={20} width={20} color={colors.white} />
           <Text style={styles.headerText}>Voltar</Text>
         </TouchableOpacity>
