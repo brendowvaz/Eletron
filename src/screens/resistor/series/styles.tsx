@@ -23,8 +23,8 @@ export default StyleSheet.create({
   },
   tittle: {
     textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 40,
+    fontFamily: 'Jersey10-Regular',
     color: colors.white,
     paddingVertical: 10,
   },

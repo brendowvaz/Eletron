@@ -91,7 +91,7 @@ const Bands: React.FC<BandsProps> = ({
           <Picker.Item label="Laranja" value="orange" />
           <Picker.Item label="Amarelo" value="yellow" />
           <Picker.Item label="Verde" value="green" />
-          <Picker.Item label="Azuk" value="blue" />
+          <Picker.Item label="Azul" value="blue" />
           <Picker.Item label="Violeta" value="violet" />
           <Picker.Item label="Cinza" value="gray" />
           <Picker.Item label="Branco" value="white" />
@@ -111,7 +111,7 @@ const Bands: React.FC<BandsProps> = ({
           <Picker.Item label="Laranja" value="orange" />
           <Picker.Item label="Amarelo" value="yellow" />
           <Picker.Item label="Verde" value="green" />
-          <Picker.Item label="Azuk" value="blue" />
+          <Picker.Item label="Azul" value="blue" />
           <Picker.Item label="Violeta" value="violet" />
           <Picker.Item label="Cinza" value="gray" />
           <Picker.Item label="Branco" value="white" />

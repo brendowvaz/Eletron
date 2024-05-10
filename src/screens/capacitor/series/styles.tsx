@@ -23,8 +23,8 @@ export default StyleSheet.create({
   },
   tittle: {
     textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 40,
+    fontFamily: 'Jersey10-Regular',
     color: colors.white,
     paddingVertical: 10,
   },
@@ -47,7 +47,7 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,.7)',
   },
   selectorsScrollViewSeries: {
-    marginTop: 80,
+    marginTop: 30,
   },
   capacitor: {
     marginHorizontal: 'auto',
