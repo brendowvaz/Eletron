@@ -26,7 +26,7 @@ const Parallels = () => {
     else {
       let resistor = 0;
 
-      arr.map(({value, unit}) => {
+      arr.map(({value, unit}: {value: number; unit: string}) => {
         value = unit === 'kΩ' ? value * 1000 : value;
         resistor = resistor + 1 / value;
       });

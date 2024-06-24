@@ -14,11 +14,13 @@ import Bands from './components/bands';
 import styles from './styles';
 
 function Capacitor({navigation}: any) {
-  const [band1, setBand1] = useState('black');
-  const [band2, setBand2] = useState('black');
-  const [band3, setBand3] = useState('black');
-  const [band4, setBand4] = useState('white');
-  const [band5, setBand5] = useState('blue');
+  const [bands, setBands] = useState([
+    'black',
+    'black',
+    'black',
+    'white',
+    'blue',
+  ]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -41,20 +43,9 @@ function Capacitor({navigation}: any) {
           width={200}
           height={200}
           style={styles.capacitor}
-          colors={[band1, band2, band3, band4, band5]}
+          colors={bands}
         />
-        <Bands
-          band1={band1}
-          band2={band2}
-          band3={band3}
-          band4={band4}
-          band5={band5}
-          setBand1={setBand1}
-          setBand2={setBand2}
-          setBand3={setBand3}
-          setBand4={setBand4}
-          setBand5={setBand5}
-        />
+        <Bands bands={bands} setBands={setBands} />
       </LinearGradient>
     </SafeAreaView>
   );

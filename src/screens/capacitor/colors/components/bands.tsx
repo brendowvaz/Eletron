@@ -4,7 +4,7 @@ import {Picker} from '@react-native-picker/picker';
 
 import styles from '../styles';
 
-const COLOR_VALUES = {
+const COLOR_VALUES: ColorMap = {
   band1: {
     black: '0',
     brown: '1',
@@ -51,39 +51,33 @@ const COLOR_VALUES = {
 };
 
 interface BandsProps {
-  band1: string;
-  band2: string;
-  band3: string;
-  band4: string;
-  band5: string;
-  setBand1: (v: string) => void;
-  setBand2: (v: string) => void;
-  setBand3: (v: string) => void;
-  setBand4: (v: string) => void;
-  setBand5: (v: string) => void;
+  bands: string[];
+  setBands: (v: string[]) => void;
 }
 
-const Bands: React.FC<BandsProps> = ({
-  band1,
-  band2,
-  band3,
-  band4,
-  band5,
-  setBand1,
-  setBand2,
-  setBand3,
-  setBand4,
-  setBand5,
-}) => {
+interface BandValues {
+  [key: string]: string;
+}
+
+interface ColorMap {
+  band1: BandValues;
+  band2: BandValues;
+  band3: BandValues;
+  band4: BandValues;
+  band5: BandValues;
+}
+const Bands: React.FC<BandsProps> = ({bands, setBands}) => {
   return (
     <ScrollView style={styles.selectorsScrollView}>
       <View style={styles.selectorsContainer}>
         <Text style={styles.selectorsText}>1ª Faixa:</Text>
         <Picker
-          selectedValue={band1}
+          selectedValue={bands[0]}
           style={styles.selectors}
           onValueChange={itemValue => {
-            setBand1(itemValue);
+            const arr = [...bands];
+            arr[0] = itemValue;
+            setBands(arr);
           }}>
           <Picker.Item label="Preto" value="black" />
           <Picker.Item label="Marrom" value="brown" />
@@ -100,10 +94,12 @@ const Bands: React.FC<BandsProps> = ({
       <View style={styles.selectorsContainer}>
         <Text style={styles.selectorsText}>2ª Faixa:</Text>
         <Picker
-          selectedValue={band2}
+          selectedValue={bands[1]}
           style={styles.selectors}
           onValueChange={itemValue => {
-            setBand2(itemValue);
+            const arr = [...bands];
+            arr[1] = itemValue;
+            setBands(arr);
           }}>
           <Picker.Item label="Preto" value="black" />
           <Picker.Item label="Marrom" value="brown" />
@@ -120,10 +116,12 @@ const Bands: React.FC<BandsProps> = ({
       <View style={styles.selectorsContainer}>
         <Text style={styles.selectorsText}>3ª Faixa:</Text>
         <Picker
-          selectedValue={band3}
+          selectedValue={bands[2]}
           style={styles.selectors}
           onValueChange={itemValue => {
-            setBand3(itemValue);
+            const arr = [...bands];
+            arr[2] = itemValue;
+            setBands(arr);
           }}>
           <Picker.Item label="Preto" value="black" />
           <Picker.Item label="Marrom" value="brown" />
@@ -136,10 +134,12 @@ const Bands: React.FC<BandsProps> = ({
       <View style={styles.selectorsContainer}>
         <Text style={styles.selectorsText}>4ª Faixa:</Text>
         <Picker
-          selectedValue={band4}
+          selectedValue={bands[3]}
           style={styles.selectors}
           onValueChange={itemValue => {
-            setBand4(itemValue);
+            const arr = [...bands];
+            arr[3] = itemValue;
+            setBands(arr);
           }}>
           <Picker.Item label="Preto" value="black" />
           <Picker.Item label="Verde" value="green" />
@@ -149,10 +149,12 @@ const Bands: React.FC<BandsProps> = ({
       <View style={styles.selectorsContainer}>
         <Text style={styles.selectorsText}>5ª Faixa:</Text>
         <Picker
-          selectedValue={band5}
+          selectedValue={bands[4]}
           style={styles.selectors}
           onValueChange={itemValue => {
-            setBand5(itemValue);
+            const arr = [...bands];
+            arr[4] = itemValue;
+            setBands(arr);
           }}>
           <Picker.Item label="Marrom" value="brown" />
           <Picker.Item label="Vermelho" value="red" />
@@ -161,12 +163,12 @@ const Bands: React.FC<BandsProps> = ({
         </Picker>
       </View>
       <Text style={styles.capacitorValueText}>
-        {parseInt(COLOR_VALUES.band1[band1] + COLOR_VALUES.band2[band2]) +
-          COLOR_VALUES.band3[band3] +
+        {parseInt(COLOR_VALUES.band1[bands[0]] + COLOR_VALUES.band2[bands[1]]) +
+          COLOR_VALUES.band3[bands[2]] +
           ' ' +
-          COLOR_VALUES.band4[band4] +
+          COLOR_VALUES.band4[bands[3]] +
           ' ' +
-          COLOR_VALUES.band5[band5]}
+          COLOR_VALUES.band5[bands[4]]}
       </Text>
     </ScrollView>
   );

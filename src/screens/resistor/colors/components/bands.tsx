@@ -4,7 +4,7 @@ import {Picker} from '@react-native-picker/picker';
 
 import styles from '../styles';
 
-const COLOR_VALUES = {
+const COLOR_VALUES: ColorMap = {
   band1: {
     black: '0',
     brown: '1',
@@ -79,6 +79,18 @@ interface BandsProps {
   setBand3: (v: string) => void;
   setBand4: (v: string) => void;
   setBand5: (v: string) => void;
+}
+
+interface BandValues {
+  [key: string]: string;
+}
+
+interface ColorMap {
+  band1: BandValues;
+  band2: BandValues;
+  band3: BandValues;
+  band4: BandValues;
+  band5: BandValues;
 }
 
 const Bands: React.FC<BandsProps> = ({

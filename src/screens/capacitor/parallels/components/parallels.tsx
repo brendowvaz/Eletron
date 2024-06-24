@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {Picker} from '@react-native-picker/picker';
 import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
 
 import styles from '../styles';
 import {Input} from '../../../../components';
-import {Picker} from '@react-native-picker/picker';
 import colors from '../../../../assets/others/colors';
 import {AddIcon, RemoveIcon} from '../../../../assets/others/svg';
 
@@ -15,6 +15,7 @@ const Parallels = () => {
   });
 
   const [capacitorValue, setCapacitorValue] = useState('');
+  //result
 
   const capacitors = Object.entries(capacitorValues).map(([key, v]) => v);
 
